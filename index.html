@@ -12,6 +12,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">BIN Checker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#faq">FAQ</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container mt-5">
         <h1 class="text-center mb-4"><i class="fas fa-credit-card"></i> BIN Checker</h1>
         <div class="input-group mb-3">
@@ -22,6 +43,46 @@
         </div>
         <div id="result" class="result border rounded p-3"></div>
     </div>
+
+    <!-- About Section -->
+    <div id="about" class="container mt-5">
+        <h2>About</h2>
+        <p>Our BIN Checker tool allows users to easily verify the details associated with a Bank Identification Number (BIN). Whether you are a merchant or a consumer, understanding the BIN can help you identify card types, issuers, and more.</p>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="container mt-5">
+        <h2>Features</h2>
+        <ul>
+            <li>Instant BIN Lookup: Get real-time results for any BIN.</li>
+            <li>User-Friendly Interface: Simple and intuitive design for all users.</li>
+            <li>Comprehensive Data: Detailed information about card types, issuers, and countries.</li>
+            <li>Responsive Design: Accessible on any device, including mobile and tablet.</li>
+        </ul>
+    </div>
+
+    <!-- FAQ Section -->
+    <div id="faq" class="container mt-5">
+        <h2>FAQ</h2>
+        <div class="mb-3">
+            <h5>What is a BIN?</h5>
+            <p>A Bank Identification Number (BIN) is the first six digits of a credit or debit card number that identifies the institution that issued the card.</p>
+        </div>
+        <div class="mb-3">
+            <h5>How does the BIN Checker work?</h5>
+            <p>Simply enter the BIN number into the input field and click "Check BIN." The tool will fetch and display the relevant information from our database.</p>
+        </div>
+        <div class="mb-3">
+            <h5>Is this service free to use?</h5>
+            <p>Yes, our BIN Checker service is completely free for everyone.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center py-3 mt-5">
+        <p>&copy; 2023 BIN Checker. All rights reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
