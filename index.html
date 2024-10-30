@@ -82,11 +82,11 @@
     <footer class="bg-light text-center py-3 mt-5">
         <p>&copy; 2023 BIN Checker. All rights reserved.</p>
     </footer>
-
-    <script src="script.js"></script>
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>$(document).ready(function(){$("#checkBinButton").on("click",function(){var t=$("#binInput").val();6===t.length?$.ajax({type:"GET",url:"https://binlist.shdc.workers.dev/?bin="+t,dataType:"json",success:function(t){var r='<h2 class="text-center">BIN Information</h2>';r+="<p><strong>BIN:</strong> "+t.BIN+"</p>",r+="<p><strong>Brand:</strong> "+t.Brand+"</p>",r+="<p><strong>Type:</strong> "+t.Type+"</p>",r+="<p><strong>Category:</strong> "+t.Category+"</p>",r+="<p><strong>Issuer:</strong> "+t.Issuer+"</p>",r+="<p><strong>Issuer Phone:</strong> "+t.IssuerPhone+"</p>",r+='<p><strong>Issuer URL:</strong> <a href="'+t.IsoCode2+'" target="_blank">'+t.IsoCode2+"</a></p>",r+="<p><strong>Country Code:</strong> "+t.isoCode3+"</p>",r+="<p><strong>Country Name:</strong> "+t.CountryName+"</p>",$("#result").html(r)},error:function(t,r,n){$("#result").html('<p class="text-danger">Error: '+n+"</p>")}}):$("#result").html('<p class="text-danger">Please enter a valid 6-digit BIN.</p>')})});</script>
 </body>
 </html>
