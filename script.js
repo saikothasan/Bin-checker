@@ -1,34 +1,30 @@
-document.getElementById('checkBinButton').addEventListener('click', function() {
-    const bin = document.getElementById('binInput').value;
-    const resultDiv = document.getElementById('result');
-
-    if (!bin) {
-        resultDiv.innerHTML = '<p class="text-danger">Please enter a BIN.</p>';
-        return;
-    }
-
-    fetch(`https://binlist.shdc.workers.dev/?bin=${bin}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            resultDiv.innerHTML = `
-                <h2 class="text-center">BIN Information</h2>
-                <p><strong>BIN:</strong> ${data.BIN}</p>
-                <p><strong>Brand:</strong> ${data.Brand}</p>
-                <p><strong>Type:</strong> ${data.Type}</p>
-                <p><strong>Category:</strong> ${data.Category}</p>
-                <p><strong>Issuer:</strong> ${data.Issuer}</p>
-                <p><strong>Issuer Phone:</strong> ${data.IssuerPhone}</p>
-                <p><strong>Issuer URL:</strong> <a href="${data.isoCode2}" target="_blank">${data.isoCode2}</a></p>
-                <p><strong>Country Code:</strong> ${data.isoCode3}</p>
-                <p><strong>Country Name:</strong> ${data.CountryName}</p>
-            `;
-        })
-        .catch(error => {
-            resultDiv.innerHTML = `<p class="text-danger">Error: ${error.message}</p>`;
-        });
+$(document).ready(function() {
+    $('#checkBinButton').on('click', function() {
+        var binInput = $('#binInput').val();
+        if (binInput.length === 6) {
+            $.ajax({
+                type: 'GET',
+                url: 'https://binlist.shdc.workers.dev/?bin=' + binInput,
+                dataType: 'json',
+                success: function(data) {
+                    var resultHtml = '<h2 class="text-center">BIN Information</h2>';
+                    resultHtml += '<p><strong>BIN:</strong> ' + data.BIN + '</p>';
+                    resultHtml += '<p><strong>Brand:</strong> ' + data.Brand + '</p>';
+                    resultHtml += '<p><strong>Type:</strong> ' + data.Type + '</p>';
+                    resultHtml += '<p><strong>Category:</strong> ' + data.Category + '</p>';
+                    resultHtml += '<p><strong>Issuer:</strong> ' + data.Issuer + '</p>';
+                    resultHtml += '<p><strong>Issuer Phone:</strong> ' + data.IssuerPhone + '</p>';
+                    resultHtml += '<p><strong>Issuer URL:</strong> <a href="' + data.IsoCode2 + '" target="_blank">' + data.IsoCode2 + '</a></p>';
+                    resultHtml += '<p><strong>Country Code:</strong> ' + data.isoCode3 + '</p>';
+                    resultHtml += '<p><strong>Country Name:</strong> ' + data.CountryName + '</p>';
+                    $('#result').html(resultHtml);
+                },
+                error: function(xhr, status, error) {
+                    $('#result').html('<p class="text-danger">Error: ' + error + '</p>');
+                }
+            });
+        } else {
+            $('#result').html('<p class="text-danger">Please enter a valid 6-digit BIN.</p>');
+        }
+    });
 });
